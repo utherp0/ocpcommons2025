@@ -6,12 +6,17 @@
     function fetchHeartbeat()
     {
       target = document.getElementById("serviceroute").value;
+      target += "/services/heartbeat";
 
-      fetch(target + "/services/heartbeat", { mode: 'no-cors' })
+      console.dir( "Polling " + target );
+
+      fetch(target, { mode: 'no-cors' })
         .then(response =>
         {
+          console.dir( response.status );
           if( !response.ok )
           {
+            console.dir( response.text() );
             throw new Error('Network response failure from ' + target );
           }
           
