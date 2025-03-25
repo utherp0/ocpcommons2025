@@ -10,6 +10,8 @@
 
       console.dir( "Polling " + target );
 
+      fetch(target, { mode: 'no-cors' }).then(function(response) { response.text().then(function(data) { console.log('rcvd:',data)})}).catch(function(error) { console.log('Error: ', error)})
+/**
       fetch(target, { mode: 'no-cors' })
         .then(response =>
         {
@@ -30,8 +32,9 @@
         {
           console.error('ERROR: ', error );
         });
-    }
+*/
 
+    }
   </script>
 </head>
 
