@@ -1,9 +1,38 @@
 <html>
 <head>
   <title>OpenShift Commons 2025 London</title>
+
+  <script>
+    function fetchHeartbeat()
+    {
+      target = document.getElementById("serviceroute").value;
+
+      fetch(target + "/services/heartbeat")
+        .then(response =>
+        {
+          if( !response.ok )
+          {
+            throw new Error('Network response failure from ' + target );
+          }
+          
+          return response.text();
+        })
+        .then(data => 
+        {
+          document.getElementById("heartbeat").value = data;
+        })
+        .catch(error =>
+        {
+          console.error('ERROR: ', error );
+        });
+    }
+
+  </script>
 </head>
 
 <body bgcolor="white">
-Test page for HTML legacy application
+<b>Test page for HTML legacy application</b><br/>
+Service Route: <input type="text" size=40 id="serviceroute"/><br/>
+<button type="button" onClick="fetchHeartbeat();">Heartbeat Service</button> <input type="text" onClick="this.blur();" size=12 id="heartbeat"/><br/>
 </body>
 </html>
