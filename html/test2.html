@@ -6,11 +6,8 @@
 
     function heartbeat()
     {
-      alert("Route " + document.getElementById("route").value);
-      alert(document.getElementById("content").src);
 
       heartbeatRoute = document.getElementById("route").value + "services/heartbeat";
-      alert( heartbeatRoute );
 
       document.getElementById("content").src = heartbeatRoute;
     }
@@ -19,7 +16,7 @@
 </head>
 
 <body>
-<b>Service Route:</b> <input type="text" id="route" size="80%"/><br/>
+<b>Service Route:</b> <input type="text" id="route" size="80%"/><br/><br/>
 <button type="button" onClick="heartbeat();">Heartbeat Service</button>
 <hr width="100%"/>
 <iframe id="content" src="blank.html" width="100%"/>
